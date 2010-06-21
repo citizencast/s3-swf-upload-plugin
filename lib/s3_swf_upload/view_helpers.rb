@@ -10,7 +10,7 @@ module S3SwfUpload
       prefix          = options[:prefix] || 's3_swf/'
       destinationKey  = options[:destinationKey] || ''
       fileTypes       = options[:fileTypes] || "*.mov; *.flv; *.wmv; *.avi; *.mp4; *.mpg; *.m4v; *.mod; *.divx; *.vob; *.3gp; *.mpeg; *.mbv; *.asf; *.f4v;",
-      fileTypeDesc    = options[:fileTypeDescs] || 'Video files'
+      fileTypeDesc    = options[:fileTypeDesc] || 'Video files'
       
       @include_s3_upload ||= false
       @count ||= 1
