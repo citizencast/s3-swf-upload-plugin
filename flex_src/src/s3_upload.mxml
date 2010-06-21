@@ -28,8 +28,11 @@
 			
 			private function browser():void {
 			    this.fileReference = new FileReference();
-			    
-				var filter:FileFilter = new FileFilter(options.fileTypeDesc, options.fileTypes);
+				import mx.controls.Alert; 
+				
+				Alert(options.fileTypeDesc + options.fileTypes + "TOTO");
+				
+				var filefilters:Array = [ new FileFilter(options.fileTypeDesc, options.fileTypes) ];
 				
 			    // setup file reference event handlers
 			    fileReference.addEventListener(Event.CANCEL, function(event:Event):void {
@@ -52,8 +55,8 @@
 			        trace(options.onSelectedCall);
 			        ExternalInterface.call(options.onSelectedCall, options.FileName, options.FileSize);
 			    });
-			    
-			    fileReference.browse([filter]);
+
+			    fileReference.browse(filefilters);
 			}
 			
 			private function upload(prefixPath:String = "", destinationKey:String = ""):void {
