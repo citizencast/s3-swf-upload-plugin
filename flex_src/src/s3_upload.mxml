@@ -10,8 +10,6 @@
 			import flash.external.ExternalInterface;
 			import flash.net.FileReference;
 			
-			import mx.controls.Alert;
-			
 			private var mimeMap:MimeTypeMap = new MimeTypeMap();
 			private var options:S3UploadOptions = new S3UploadOptions();
 			private var fileReference:FileReference;
