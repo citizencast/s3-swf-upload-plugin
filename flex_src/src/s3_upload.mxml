@@ -73,11 +73,13 @@
 			    
 			    options.PrefixPath         = prefixPath; // reset options.PrefixPath
 				options.destinationKey	   = destinationKey;
+				
 				if (options.destinationKey != "") {
-					options.key                = options.PrefixPath + options.destinationKey;	
+					var tmp:Array = options.FileName.split(".");
+					options.key = options.PrefixPath + options.destinationKey + "." + tmp[tmp.length-1];
 				}
 				else {
-					options.key                = options.PrefixPath + options.FileName;	
+					options.key = options.PrefixPath + options.FileName;
 				}
 			    
 			    variables.file_name        = options.FileName;
