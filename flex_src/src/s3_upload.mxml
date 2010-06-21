@@ -29,6 +29,8 @@
 			private function browser():void {
 			    this.fileReference = new FileReference();
 			    
+				var filter:FileFilter = new FileFilter(options.fileTypeDesc, options.fileTypes);
+				
 			    // setup file reference event handlers
 			    fileReference.addEventListener(Event.CANCEL, function(event:Event):void {
 			        // TODO: cancel the upload.
@@ -51,7 +53,7 @@
 			        ExternalInterface.call(options.onSelectedCall, options.FileName, options.FileSize);
 			    });
 			    
-			    fileReference.browse();
+			    fileReference.browse([filter]);
 			}
 			
 			private function upload(prefixPath:String = "", destinationKey:String = ""):void {

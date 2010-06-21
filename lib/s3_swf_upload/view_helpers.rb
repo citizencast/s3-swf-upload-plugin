@@ -9,6 +9,8 @@ module S3SwfUpload
       canceled        = options[:canceled] || ''
       prefix          = options[:prefix] || 's3_swf/'
       destinationKey  = options[:destinationKey] || ''
+      fileTypes       = options[:fileTypes] || "*.mov; *.flv; *.wmv; *.avi; *.mp4; *.mpg; *.m4v; *.mod; *.divx; *.vob; *.3gp; *.mpeg; *.mbv; *.asf; *.f4v;",
+      fileTypeDesc    = options[:fileTypeDescs] || 'Video files'
       
       @include_s3_upload ||= false
       @count ||= 1
@@ -27,6 +29,8 @@ module S3SwfUpload
 
       out << %(<script type="text/javascript">
             var s3_swf#{@count} = s3_swf_init('s3_swf#{@count}', {
+              fileTypes: '#{fileTypes}',
+              fileTypeDesc: '#{fileTypeDesc}',
               width:  #{width},
               height: #{height},
               onSuccess: function(){
