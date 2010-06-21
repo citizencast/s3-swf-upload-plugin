@@ -44,7 +44,7 @@ module S3SwfUpload
             });
         </script>
 
-        <a href="#" id='s3_upload_#{@count}' onclick="s3_swf#{@count}.upload('#{prefix}', '#{destinationKey}'); document.body.removeChild(document.getElementById('s3_upload_#{@count}'));">Upload</a>
+        <a href="#" id='s3_upload_#{@count}' onclick="s3_swf#{@count}.upload('#{prefix}', '#{destinationKey}'); $('#s3_upload_#{@count}').remove();">Upload</a>
       )
       
       @count += 1
