@@ -1,13 +1,14 @@
 module S3SwfUpload
   module ViewHelpers
     def s3_swf_upload_tag(options = {})
-      height     = options[:height] || 40
-      width      = options[:width]  || 500
-      success    = options[:success]  || ''
-      failed     = options[:failed]  || ''
-      selected   = options[:selected]  || ''
-      canceled     = options[:canceled] || ''
-      prefix     = options[:prefix] || 's3_swf/'
+      height          = options[:height] || 40
+      width           = options[:width]  || 500
+      success         = options[:success]  || ''
+      failed          = options[:failed]  || ''
+      selected        = options[:selected]  || ''
+      canceled        = options[:canceled] || ''
+      prefix          = options[:prefix] || 's3_swf/'
+      destinationKey  = options[:destinationKey] || ''
       
       @include_s3_upload ||= false
       @count ||= 1
@@ -26,6 +27,7 @@ module S3SwfUpload
 
       out << %(<script type="text/javascript">
             var s3_swf#{@count} = s3_swf_init('s3_swf#{@count}', {
+              destinationKey: #{destinationKey},
               width:  #{width},
               height: #{height},
               onSuccess: function(){

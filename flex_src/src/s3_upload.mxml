@@ -3,11 +3,12 @@
 
     <mx:Script>
     	<![CDATA[
-			import flash.external.ExternalInterface;
-			import flash.net.FileReference;
 			import com.adobe.net.MimeTypeMap;
 			import com.elctech.S3UploadOptions;
 			import com.elctech.S3UploadRequest;
+			
+			import flash.external.ExternalInterface;
+			import flash.net.FileReference;
 			
 			private var mimeMap:MimeTypeMap = new MimeTypeMap();
 			private var options:S3UploadOptions = new S3UploadOptions();
@@ -22,6 +23,7 @@
 				  	options.onFailedCall      = Application.application.parameters.id + '.onFailed';
 				  	options.onSelectedCall    = Application.application.parameters.id + '.onSelected';
 				  	options.onCancelCall      = Application.application.parameters.id + '.onCancel';
+					options.destinationKey	  = Application.application.parameters.id + '.destinationKey';
 			    }
 			}
 			
@@ -53,7 +55,7 @@
 			    fileReference.browse();
 			}
 			
-			private function upload(prefixPath:String = ""):void {
+			private function upload(prefixPath:String = "", destinationKey:String = ""):void {
 			    
 			    // return if user not selected any file
 			    if (options.FileSize == null) {
@@ -70,7 +72,13 @@
 			    var variables:URLVariables = new URLVariables();
 			    
 			    options.PrefixPath         = prefixPath; // reset options.PrefixPath
-			    options.key                = options.PrefixPath + options.FileName;
+				options.destinationKey	   = destinationKey;
+				if (options.destinationKey != "") {
+					options.key                = options.PrefixPath + options.destinationKey;	
+				}
+				else {
+					options.key                = options.PrefixPath + options.FileName;	
+				}
 			    
 			    variables.file_name        = options.FileName;
 			    variables.file_size        = options.FileSize;
