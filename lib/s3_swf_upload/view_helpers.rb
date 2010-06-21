@@ -7,7 +7,7 @@ module S3SwfUpload
       failed     = options[:failed]  || ''
       selected   = options[:selected]  || ''
       canceled     = options[:canceled] || ''
-      prefix     = options[:prefix] || 's3_swf'
+      prefix     = options[:prefix] || 's3_swf/'
       
       @include_s3_upload ||= false
       @count ||= 1
@@ -43,7 +43,7 @@ module S3SwfUpload
             });
         </script>
 
-        <a href="#" onclick="s3_swf#{@count}.upload('#{prefix}/')">Upload</a>
+        <a href="#" onclick="s3_swf#{@count}.upload('#{prefix}')">Upload</a>
       )
       
       @count += 1
