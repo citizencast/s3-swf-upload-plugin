@@ -27,7 +27,7 @@ module S3SwfUpload
 
       out << %(<script type="text/javascript">
             var s3_swf#{@count} = s3_swf_init('s3_swf#{@count}', {
-              destinationKey: #{destinationKey},
+              destinationKey: '#{destinationKey}',
               width:  #{width},
               height: #{height},
               onSuccess: function(){
