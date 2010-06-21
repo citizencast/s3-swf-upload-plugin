@@ -23,6 +23,8 @@
 				  	options.onFailedCall      = Application.application.parameters.id + '.onFailed';
 				  	options.onSelectedCall    = Application.application.parameters.id + '.onSelected';
 				  	options.onCancelCall      = Application.application.parameters.id + '.onCancel';
+					options.fileTypes         = Application.application.parameters.id + '.fileTypes';
+					options.fileTypeDesc      = Application.application.parameters.id + '.fileTypeDesc';
 			    }
 			}
 			

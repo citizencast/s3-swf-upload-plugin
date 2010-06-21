@@ -10,13 +10,15 @@ var swfobject=function(){var D="undefined",r="object",S="Shockwave Flash",W="Sho
 
 function s3_swf_init(id, options)
 {
-  width           = (options.width == undefined) ? 300 : options.width
-  height          = (options.height == undefined) ? 35 : options.height
-  version         = (options.version == undefined) ? '9.0.0' : options.version
-  onFileSelected  = (options.onFileSelected == undefined) ? function(){} : options.onFileSelected
-  onSuccess       = (options.onSuccess == undefined) ? function(){} : options.onSuccess
-  onFailed        = (options.onFailed == undefined) ? function(){} : options.onFailed
-  onCancel        = (options.onCancel == undefined) ? function(){} : options.onCancel
+  width           = (options.width == undefined) ? 300 : options.width;
+  height          = (options.height == undefined) ? 35 : options.height;
+  version         = (options.version == undefined) ? '9.0.0' : options.version;
+  onFileSelected  = (options.onFileSelected == undefined) ? function(){} : options.onFileSelected;
+  onSuccess       = (options.onSuccess == undefined) ? function(){} : options.onSuccess;
+  onFailed        = (options.onFailed == undefined) ? function(){} : options.onFailed;
+  onCancel        = (options.onCancel == undefined) ? function(){} : options.onCancel;
+  fileTypes       = (options.fileTypes == undefined) ? "*.*" : options.fileTypes;
+  fileTypeDesc    = (options.fileTypeDesc == undefined) ? "All Files" : options.fileTypeDescs;
 
   flashvars = {
     signature_query_url: window.location.protocol + '//' + window.location.host + '/s3_uploads',
@@ -31,7 +33,7 @@ function s3_swf_init(id, options)
     onCancel: onCancel
   }
   
-  swfobject.embedSWF("/s3_upload.swf", id, width, height, version, null, flashvars);
+  swfobject.embedSWF("/s3_upload.swf", id, width, height, version, null, flashvars, fileTypes, fileTypeDesc);
   
   return(s3_swf);
 }
