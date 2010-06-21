@@ -27,7 +27,6 @@ module S3SwfUpload
 
       out << %(<script type="text/javascript">
             var s3_swf#{@count} = s3_swf_init('s3_swf#{@count}', {
-              destinationKey: '#{destinationKey}',
               width:  #{width},
               height: #{height},
               onSuccess: function(){
@@ -45,7 +44,7 @@ module S3SwfUpload
             });
         </script>
 
-        <a href="#" onclick="s3_swf#{@count}.upload('#{prefix}')">Upload</a>
+        <a href="#" onclick="s3_swf#{@count}.upload('#{prefix}', '#{destinationKey}')">Upload</a>
       )
       
       @count += 1

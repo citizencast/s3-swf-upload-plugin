@@ -10,6 +10,8 @@
 			import flash.external.ExternalInterface;
 			import flash.net.FileReference;
 			
+			import mx.controls.Alert;
+			
 			private var mimeMap:MimeTypeMap = new MimeTypeMap();
 			private var options:S3UploadOptions = new S3UploadOptions();
 			private var fileReference:FileReference;
@@ -23,7 +25,6 @@
 				  	options.onFailedCall      = Application.application.parameters.id + '.onFailed';
 				  	options.onSelectedCall    = Application.application.parameters.id + '.onSelected';
 				  	options.onCancelCall      = Application.application.parameters.id + '.onCancel';
-					options.destinationKey	  = Application.application.parameters.id + '.destinationKey';
 			    }
 			}
 			
@@ -70,7 +71,7 @@
 			    var request:URLRequest     = new URLRequest(options.SignatureQueryURL);
 			    var loader:URLLoader       = new URLLoader();
 			    var variables:URLVariables = new URLVariables();
-			    
+				
 			    options.PrefixPath         = prefixPath; // reset options.PrefixPath
 				options.destinationKey	   = destinationKey;
 				
