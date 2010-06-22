@@ -36,6 +36,7 @@ package com.elctech {
         public var onFailedCall:String   = "s3_swf.onFailed";
         public var onSelectedCall:String = "s3_swf.onSelected";
         public var onCancelCall:String   = "s3_swf.onCancel";
+		public var onStartCall:String    = "s3_swf.onStart";
 		public var destinationKey:String = "s3_swf.destinationKey";
 
     }

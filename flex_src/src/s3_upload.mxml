@@ -19,12 +19,13 @@
 			    	ExternalInterface.addCallback("init", init);
 			    	ExternalInterface.addCallback("upload", upload);
 				  	options.SignatureQueryURL = Application.application.parameters.signature_query_url;
+					options.fileTypes         = Application.application.parameters.fileTypes;
+					options.fileTypeDesc      = Application.application.parameters.fileTypeDesc;
 				  	options.onSuccessCall     = Application.application.parameters.id + '.onSuccess';
 				  	options.onFailedCall      = Application.application.parameters.id + '.onFailed';
 				  	options.onSelectedCall    = Application.application.parameters.id + '.onSelected';
 				  	options.onCancelCall      = Application.application.parameters.id + '.onCancel';
-					options.fileTypes         = Application.application.parameters.id + '.fileTypes';
-					options.fileTypeDesc      = Application.application.parameters.id + '.fileTypeDesc';
+					options.onStartCall		  = Application.application.parameters.id + '.onStart';
 			    }
 			}
 			
@@ -32,7 +33,7 @@
 			    this.fileReference = new FileReference();
 				import mx.controls.Alert; 
 				
-				Alert(options.fileTypeDesc + options.fileTypes + "TOTO");
+				//Alert(options.fileTypeDesc + options.fileTypes + "TOTO");
 				
 				var filefilters:Array = [ new FileFilter(options.fileTypeDesc, options.fileTypes) ];
 				
@@ -131,6 +132,7 @@
 			        textInput.text = "Uploading...";
 			        uploadProgressBar.visible = true;
 			        selectButton.enabled = false;
+					ExternalInterface.call(options.onStartCall, options.FileName);
 			        trace(event);
 			    });
 			    request.addEventListener(ProgressEvent.PROGRESS, function(event:ProgressEvent):void {
