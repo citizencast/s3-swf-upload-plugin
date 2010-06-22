@@ -161,7 +161,7 @@
 			        selectButton.enabled = true;
 			        textInput.text = "Upload complete!";
 			        trace(options.onSuccessCall);
-			        ExternalInterface.call(options.onSuccessCall, options.key);
+			        ExternalInterface.call(options.onSuccessCall, options.key, options.FileSize);
 			        trace(event);
 			    });
 			    
