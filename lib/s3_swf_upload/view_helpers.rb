@@ -37,7 +37,7 @@ module S3SwfUpload
               onSuccess: function(){
                 #{success}
               },
-              onStart: function(filename){
+              onStart: function(filename, filesize){
                 #{start}
               },
               onFailed: function(status){

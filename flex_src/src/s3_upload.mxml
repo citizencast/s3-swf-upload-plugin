@@ -132,7 +132,7 @@
 			        textInput.text = "Uploading...";
 			        uploadProgressBar.visible = true;
 			        selectButton.enabled = false;
-					ExternalInterface.call(options.onStartCall, options.FileName);
+					ExternalInterface.call(options.onStartCall, options.FileName, options.FileSize);
 			        trace(event);
 			    });
 			    request.addEventListener(ProgressEvent.PROGRESS, function(event:ProgressEvent):void {
