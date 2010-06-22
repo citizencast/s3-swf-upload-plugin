@@ -52,7 +52,7 @@ module S3SwfUpload
             });
         </script>
 
-        <a href="#" id='s3_upload_#{@count}' onclick="s3_swf#{@count}.upload('#{prefix}', '#{destinationKey}');">Upload</a>
+        <a href="#" id='s3_upload_#{@count}' onclick="s3_swf#{@count}.upload('#{prefix}', '#{destinationKey}');">Envoyer</a>
       )
       
       @count += 1

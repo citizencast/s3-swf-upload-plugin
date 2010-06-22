@@ -129,7 +129,7 @@
 			    var request:S3UploadRequest = new S3UploadRequest(options);
 			    
 			    request.addEventListener(Event.OPEN, function(event:Event):void {
-			        textInput.text = "Uploading...";
+			        textInput.text = "Envoi...";
 			        uploadProgressBar.visible = true;
 			        selectButton.enabled = false;
 					ExternalInterface.call(options.onStartCall, options.FileName, options.FileSize);
@@ -137,7 +137,7 @@
 			    });
 			    request.addEventListener(ProgressEvent.PROGRESS, function(event:ProgressEvent):void {
 			    	var penct:uint = uint(event.bytesLoaded / event.bytesTotal * 100);
-			    	uploadProgressBar.label = 'Uploading ' + penct + " %";
+			    	uploadProgressBar.label = 'Envoi ' + penct + " %";
 			        uploadProgressBar.setProgress(event.bytesLoaded, event.bytesTotal);
 			    });
 			    request.addEventListener(IOErrorEvent.IO_ERROR, function(event:IOErrorEvent):void {
@@ -159,7 +159,7 @@
 			    request.addEventListener(DataEvent.UPLOAD_COMPLETE_DATA, function(event:Event):void {
 			        uploadProgressBar.visible = false;
 			        selectButton.enabled = true;
-			        textInput.text = "Upload complete!";
+			        textInput.text = "Envoi terminé!";
 			        trace(options.onSuccessCall);
 			        ExternalInterface.call(options.onSuccessCall, options.key, options.FileSize);
 			        trace(event);
@@ -196,6 +196,6 @@
     
     <mx:Label x="10" y="10" id="textInput" color="#000000" fontWeight="bold" text="Click the Select File Button... "/>
     <mx:Button x="350" y="7" label="Select" click="browser()" id="selectButton"/>
-    <mx:ProgressBar x="10" y="7" width="325" height="20" labelPlacement="center" id="uploadProgressBar" visible="false" mode="manual" label="Uploading..."/>
+    <mx:ProgressBar x="10" y="7" width="325" height="20" labelPlacement="center" id="uploadProgressBar" visible="false" mode="manual" label="Envoi..."/>
     
 </mx:Application>
