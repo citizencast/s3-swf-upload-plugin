@@ -34,7 +34,7 @@ module S3SwfUpload
               fileTypeDesc: '#{fileTypeDesc}',
               width:  #{width},
               height: #{height},
-              onSuccess: function(){
+              onSuccess: function(filename){
                 #{success}
               },
               onStart: function(filename, filesize){

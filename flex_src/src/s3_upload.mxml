@@ -66,8 +66,8 @@
 			    
 			    // return if user not selected any file
 			    if (options.FileSize == null) {
-			    	trace(options.onSuccessCall);
-			        ExternalInterface.call(options.onSuccessCall);
+//			    	trace(options.onSuccessCall);
+//			        ExternalInterface.call(options.onSuccessCall, options.FileName);
 			        return;
 			    }
 			    
@@ -161,7 +161,7 @@
 			        selectButton.enabled = true;
 			        textInput.text = "Upload complete!";
 			        trace(options.onSuccessCall);
-			        ExternalInterface.call(options.onSuccessCall);
+			        ExternalInterface.call(options.onSuccessCall, options.key);
 			        trace(event);
 			    });
 			    
