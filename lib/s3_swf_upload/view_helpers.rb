@@ -2,7 +2,7 @@ module S3SwfUpload
   module ViewHelpers
     def s3_swf_upload_tag(options = {})
       height          = options[:height] || 40
-      width           = options[:width]  || 500
+      width           = options[:width]  || 420
       success         = options[:success]  || ''
       failed          = options[:failed]  || ''
       selected        = options[:selected]  || ''

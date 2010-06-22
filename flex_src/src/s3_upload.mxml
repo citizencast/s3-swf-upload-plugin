@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" creationComplete="registerCallbacks();" layout="absolute" height="40" width="500">
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" creationComplete="registerCallbacks();" layout="absolute" height="40" width="420">
 
     <mx:Script>
     	<![CDATA[
