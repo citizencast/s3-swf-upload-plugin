@@ -17,7 +17,7 @@ function s3_swf_init(id, options)
   onSuccess         = (options.onSuccess == undefined) ? function(){} : options.onSuccess;
   onFailed          = (options.onFailed == undefined) ? function(){} : options.onFailed;
   onCancel          = (options.onCancel == undefined) ? function(){} : options.onCancel;
-  onUploadingStart  = (options.onUploadingStart == undefined) ? function(){} : options.onUploadingStart;
+  onStart           = (options.onStart == undefined) ? function(){} : options.onStart;
   fileTypes         = (options.fileTypes == undefined) ? "*.*" : options.fileTypes;
   fileTypeDesc      = (options.fileTypeDesc == undefined) ? "All Files" : options.fileTypeDescs;
 
@@ -33,7 +33,7 @@ function s3_swf_init(id, options)
     onSuccess: onSuccess,
     onFailed: onFailed,
     onSelected: onFileSelected, 
-    onUploadingStart: onUploadingStart,
+    onStart: onStart,
     onCancel: onCancel
   }
   
