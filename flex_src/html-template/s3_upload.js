@@ -15,5 +15,8 @@ var s3_swf = {
     onSelected: function(fileName, fileSize) {
     },
     onCancel: function() {
-    }
+    },
+    fileTypes: '*.mov; *.flv; *.wmv; *.avi; *.mp4; *.mpg; *.m4v; *.mod; *.divx; *.vob; *.3gp; *.mpeg; *.mbv; *.asf; *.f4v;',
+    fileTypeDesc: 'Video files',
+    locales: '{"click_to_browse":"Click on the button to browse","uploading":"Uploading","upload_error":"Uploading error","browse":"Browse","upload_finish":"Upload succeed","send":"Upload"}'
 }

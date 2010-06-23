@@ -1,0 +1,9 @@
+fr:
+  s3_swf_upload:
+    messages:
+      uploading:          "Envoi"
+      browse:             "Parcourir"
+      click_to_browse:    "Cliquer sur le bouton pour parcourir"
+      upload_error:       "Erreur lors de l'envoi"
+      upload_finish:      "Envoi terminé"
+      send:               "Envoyer"

@@ -15,6 +15,10 @@ class S3SwfUploadGenerator < Rails::Generator::Base
       FileUtils.mkdir_p('lib/tasks')
       m.file 's3_swf.rake',   'lib/tasks/s3_swf.rake'
       m.file 'crossdomain.xml', 'lib/tasks/crossdomain.xml'
+      FileUtils.mkdir_p('config/locales/en')
+      m.file 's3_swf_upload.en.yml', 'config/locales/en/s3_swf_upload.yml'
+      FileUtils.mkdir_p('config/locales/fr')
+      m.file 's3_swf_upload.fr.yml', 'config/locales/fr/s3_swf_upload.yml'
       m.route_resources 's3_uploads'
     end
   end

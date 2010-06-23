@@ -2,7 +2,7 @@
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" creationComplete="registerCallbacks();" layout="absolute" height="40" width="420">
 
     <mx:Script>
-    	<![CDATA[
+    	<![CDATA[			
 			import com.adobe.net.MimeTypeMap;
 			import com.elctech.S3UploadOptions;
 			import com.elctech.S3UploadRequest;
@@ -10,30 +10,34 @@
 			import flash.external.ExternalInterface;
 			import flash.net.FileReference;
 			
+			import mx.core.FlexGlobals;
+			
 			private var mimeMap:MimeTypeMap = new MimeTypeMap();
-			private var options:S3UploadOptions = new S3UploadOptions();
 			private var fileReference:FileReference;
-
+			private var options:S3UploadOptions = new S3UploadOptions();
+			
+			[Bindable]
+			public var localeObject:Object;
+			
 			private function registerCallbacks():void {
 			    if (ExternalInterface.available) {
 			    	ExternalInterface.addCallback("init", init);
 			    	ExternalInterface.addCallback("upload", upload);
-				  	options.SignatureQueryURL = Application.application.parameters.signature_query_url;
-					options.fileTypes         = Application.application.parameters.fileTypes;
-					options.fileTypeDesc      = Application.application.parameters.fileTypeDesc;
-				  	options.onSuccessCall     = Application.application.parameters.id + '.onSuccess';
-				  	options.onFailedCall      = Application.application.parameters.id + '.onFailed';
-				  	options.onSelectedCall    = Application.application.parameters.id + '.onSelected';
-				  	options.onCancelCall      = Application.application.parameters.id + '.onCancel';
-					options.onStartCall		  = Application.application.parameters.id + '.onStart';
+				  	options.SignatureQueryURL = FlexGlobals.topLevelApplication.parameters.signature_query_url;
+					options.fileTypes         = FlexGlobals.topLevelApplication.parameters.fileTypes;
+					options.fileTypeDesc      = FlexGlobals.topLevelApplication.parameters.fileTypeDesc;
+				  	options.onSuccessCall     = FlexGlobals.topLevelApplication.parameters.id + '.onSuccess';
+				  	options.onFailedCall      = FlexGlobals.topLevelApplication.parameters.id + '.onFailed';
+				  	options.onSelectedCall    = FlexGlobals.topLevelApplication.parameters.id + '.onSelected';
+				  	options.onCancelCall      = FlexGlobals.topLevelApplication.parameters.id + '.onCancel';
+					options.onStartCall		  = FlexGlobals.topLevelApplication.parameters.id + '.onStart';
+					options.locales 		  = FlexGlobals.topLevelApplication.parameters.locales;
+					localeObject 			  = ExternalInterface.call("function(){return " + options.locales + "}");
 			    }
 			}
 			
 			private function browser():void {
 			    this.fileReference = new FileReference();
-				import mx.controls.Alert; 
-				
-				//Alert(options.fileTypeDesc + options.fileTypes + "TOTO");
 				
 				var filefilters:Array = [ new FileFilter(options.fileTypeDesc, options.fileTypes) ];
 				
@@ -137,13 +141,13 @@
 			    });
 			    request.addEventListener(ProgressEvent.PROGRESS, function(event:ProgressEvent):void {
 			    	var penct:uint = uint(event.bytesLoaded / event.bytesTotal * 100);
-			    	uploadProgressBar.label = 'Envoi ' + penct + " %";
+			    	uploadProgressBar.label = localeObject['uploading'] + ' ' + penct + " %";
 			        uploadProgressBar.setProgress(event.bytesLoaded, event.bytesTotal);
 			    });
 			    request.addEventListener(IOErrorEvent.IO_ERROR, function(event:IOErrorEvent):void {
 			        uploadProgressBar.visible = false;
 			        selectButton.enabled = true;
-			        textInput.text = "Upload error!";
+			        textInput.text = localeObject['upload_error'];
 			        trace(options.onFailedCall);
 			        ExternalInterface.call(options.onFailedCall);
 			        trace(event);
@@ -151,7 +155,7 @@
 			    request.addEventListener(SecurityErrorEvent.SECURITY_ERROR, function(event:SecurityErrorEvent):void {
 			        uploadProgressBar.visible = false;
 			        selectButton.enabled = true;
-			        textInput.text = "Upload error!";
+			        textInput.text = localeObject['upload_error'];
 			        trace(options.onFailedCall);
 			        ExternalInterface.call(options.onFailedCall);
 			        trace(event);
@@ -159,7 +163,7 @@
 			    request.addEventListener(DataEvent.UPLOAD_COMPLETE_DATA, function(event:Event):void {
 			        uploadProgressBar.visible = false;
 			        selectButton.enabled = true;
-			        textInput.text = "Envoi terminé!";
+			        textInput.text = localeObject['upload_finish'];
 			        trace(options.onSuccessCall);
 			        ExternalInterface.call(options.onSuccessCall, options.key, options.FileSize);
 			        trace(event);
@@ -194,8 +198,8 @@
     	]]>
     </mx:Script>
     
-    <mx:Label x="10" y="10" id="textInput" color="#000000" fontWeight="bold" text="Cliquer sur le bouton parcourir... "/>
-    <mx:Button x="350" y="7" label="Parcourir" click="browser()" id="selectButton"/>
-    <mx:ProgressBar x="10" y="7" width="325" height="20" labelPlacement="center" id="uploadProgressBar" visible="false" mode="manual" label="Envoi..."/>
+    <mx:Label x="10" y="10" id="textInput" color="#000000" fontWeight="bold" text="{localeObject['click_to_browse']}"/>
+    <mx:Button x="350" y="7" label="{localeObject['browse']}" click="browser()" id="selectButton"/>
+    <mx:ProgressBar x="10" y="7" width="325" height="20" labelPlacement="center" id="uploadProgressBar" visible="false" mode="manual" label="{localeObject['uploading']}..."/>
     
 </mx:Application>

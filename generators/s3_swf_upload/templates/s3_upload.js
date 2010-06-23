@@ -20,11 +20,13 @@ function s3_swf_init(id, options)
   onStart           = (options.onStart == undefined) ? function(){} : options.onStart;
   fileTypes         = (options.fileTypes == undefined) ? "*.*" : options.fileTypes;
   fileTypeDesc      = (options.fileTypeDesc == undefined) ? "All Files" : options.fileTypeDescs;
+  locales           = (options.locales == undefined) ? alert('Error : no locales !') : options.locales;
 
   flashvars = {
     signature_query_url: window.location.protocol + '//' + window.location.host + '/s3_uploads',
     fileTypes: fileTypes,
     fileTypeDesc: fileTypeDesc,
+    locales: locales,
     id: id
   }
   var s3_swf = {

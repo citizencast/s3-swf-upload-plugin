@@ -1,4 +1,22 @@
 module S3SwfUpload
+  
+  class I18NMessages
+    def [](key)
+      I18n.t(key, :scope => 's3_swf_upload.messages')
+    end
+    
+    def all
+      all_messages = {}
+      I18n.available_locales.each do |locale|
+        all_messages[locale] = I18n.all_translations[locale][:s3_swf_upload][:messages]
+      end
+      all_messages
+    end
+    
+  end
+  
+  ERROR_MESSAGES = I18NMessages.new
+  
   module ViewHelpers
     def s3_swf_upload_tag(options = {})
       height          = options[:height] || 40
@@ -34,6 +52,7 @@ module S3SwfUpload
               fileTypeDesc: '#{fileTypeDesc}',
               width:  #{width},
               height: #{height},
+              locales: '#{ERROR_MESSAGES.all[I18n.locale].to_json.gsub(/['"\\\x0]/,'\\\\\0')}',
               onSuccess: function(filename, filesize){
                 #{success}
               },
@@ -52,7 +71,7 @@ module S3SwfUpload
             });
         </script>
 
-        <a href="#" id='s3_upload_#{@count}' onclick="s3_swf#{@count}.upload('#{prefix}', '#{destinationKey}');">Envoyer</a>
+        <a href="#" id='s3_upload_#{@count}' onclick="s3_swf#{@count}.upload('#{prefix}', '#{destinationKey}');">#{ERROR_MESSAGES[:send]}</a>
       )
       
       @count += 1

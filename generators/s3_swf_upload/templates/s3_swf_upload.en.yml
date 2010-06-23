@@ -1,0 +1,9 @@
+en:
+  s3_swf_upload:
+    messages:
+      uploading:          "Uploading"
+      browse:             "Browse"
+      click_to_browse:    "Click on the button to browse"
+      upload_error:       "Uploading error"
+      upload_finish:      "Upload succeed"
+      send:               "Upload"
