@@ -26,7 +26,7 @@ function s3_swf_init(id, options)
     signature_query_url: window.location.protocol + '//' + window.location.host + '/s3_uploads',
     fileTypes: fileTypes,
     fileTypeDesc: fileTypeDesc,
-    locales: locales,
+    locales: encodeURIComponent(JSON.stringify(locales)),
     id: id
   }
   var s3_swf = {
@@ -39,7 +39,7 @@ function s3_swf_init(id, options)
     onCancel: onCancel
   }
   
-  swfobject.embedSWF("/s3_upload.swf", id, width, height, version, null, flashvars);
+  swfobject.embedSWF("/s3_upload.swf?"+(new Date().getTime()), id, width, height, version, null, flashvars);
   
   return(s3_swf);
 }

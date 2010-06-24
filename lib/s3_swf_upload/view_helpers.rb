@@ -19,7 +19,7 @@ module S3SwfUpload
   
   module ViewHelpers
     def s3_swf_upload_tag(options = {})
-      height          = options[:height] || 40
+      height          = options[:height] || 200
       width           = options[:width]  || 420
       success         = options[:success]  || ''
       failed          = options[:failed]  || ''
@@ -52,7 +52,7 @@ module S3SwfUpload
               fileTypeDesc: '#{fileTypeDesc}',
               width:  #{width},
               height: #{height},
-              locales: '#{ERROR_MESSAGES.all[I18n.locale.to_sym].to_json.gsub(/['\\\x0]/,'\\\\\0')}',
+              locales: #{ERROR_MESSAGES.all[I18n.locale.to_sym].to_json},
               onSuccess: function(filename, filesize){
                 #{success}
               },

@@ -11,6 +11,8 @@
 			import flash.net.FileReference;
 			
 			import mx.core.FlexGlobals;
+						
+			import com.adobe.serialization.json.*;
 			
 			private var mimeMap:MimeTypeMap = new MimeTypeMap();
 			private var fileReference:FileReference;
@@ -32,7 +34,7 @@
 				  	options.onCancelCall      = FlexGlobals.topLevelApplication.parameters.id + '.onCancel';
 					options.onStartCall		  = FlexGlobals.topLevelApplication.parameters.id + '.onStart';
 					options.locales 		  = FlexGlobals.topLevelApplication.parameters.locales;
-					localeObject 			  = ExternalInterface.call("function(){return " + options.locales + "}");
+					localeObject = JSON.decode(options.locales);
 			    }
 			}
 			
