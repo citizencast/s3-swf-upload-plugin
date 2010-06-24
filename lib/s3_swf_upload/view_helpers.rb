@@ -19,7 +19,7 @@ module S3SwfUpload
   
   module ViewHelpers
     def s3_swf_upload_tag(options = {})
-      height          = options[:height] || 200
+      height          = options[:height] || 50
       width           = options[:width]  || 420
       success         = options[:success]  || ''
       failed          = options[:failed]  || ''
