@@ -52,7 +52,7 @@ module S3SwfUpload
               fileTypeDesc: '#{fileTypeDesc}',
               width:  #{width},
               height: #{height},
-              locales: '#{ERROR_MESSAGES.all[I18n.locale.to_sym].to_json.gsub(/['"\\\x0]/,'\\\\\0')}',
+              locales: '#{ERROR_MESSAGES.all[I18n.locale.to_sym].to_json.gsub(/['\\\x0]/,'\\\\\0')}',
               onSuccess: function(filename, filesize){
                 #{success}
               },
