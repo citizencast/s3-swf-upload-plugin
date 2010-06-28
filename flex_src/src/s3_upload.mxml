@@ -59,12 +59,14 @@
 					
 					if (fileReference.size > options.maxSize) {
 						//Alert.show("TOO BIG !!" + options.maxSize + " " + fileReference.size);
+						textInput.setStyle("color", "red");
 						textInput.text = localeObject['too_big'];
 						return;
 					}
 					
 			        // set options.FileName
 			        options.FileName = fileReference.name.replace(/^.*(\\|\/)/gi, '').replace(/[^A-Za-z0-9\.\-]/gi, '_');
+					textInput.setStyle("color", "black");
 			        textInput.text   = options.FileName;
 			        
 			        // set options:FileSize
