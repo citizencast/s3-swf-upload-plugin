@@ -7,3 +7,4 @@ en:
       upload_error:       "Uploading error"
       upload_finish:      "Upload succeed"
       send:               "Upload"
+      too_big:            "File size too big (400mb max)"

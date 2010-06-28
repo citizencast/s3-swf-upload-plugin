@@ -30,6 +30,7 @@ module S3SwfUpload
       fileTypes       = options[:fileTypes] || "*.mov; *.flv; *.wmv; *.avi; *.mp4; *.mpg; *.m4v; *.mod; *.divx; *.vob; *.3gp; *.mpeg; *.mbv; *.asf; *.f4v;"
       fileTypeDesc    = options[:fileTypeDesc] || 'Video files'
       start           = options[:start] || ''
+      maxSize         = options[:maxSize] || '400000000'
       
       @include_s3_upload ||= false
       @count ||= 1
@@ -37,12 +38,12 @@ module S3SwfUpload
       out = ""
       out << %(
         <div id="s3_swf#{@count}">
-          Please <a href="http://www.adobe.com/go/getflashplayer">Update</a> your Flash Player to Flash v9.0.1 or higher...
+          Please <a href="http://www.adobe.com/go/getflashplayer">Update</a> your Flash Player to Flash v10.0.0 or higher...
         </div>
       )
       
       if !@include_s3_upload
-        out << '<script type="text/javascript" src="/javascripts/s3_upload.js"></script>' 
+        out << javascript_include_tag("s3_upload.js")
         @include_s3_upload = true
       end
 

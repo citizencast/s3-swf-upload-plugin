@@ -21,10 +21,12 @@ function s3_swf_init(id, options)
   fileTypes         = (options.fileTypes == undefined) ? "*.*" : options.fileTypes;
   fileTypeDesc      = (options.fileTypeDesc == undefined) ? "All Files" : options.fileTypeDescs;
   locales           = (options.locales == undefined) ? alert('Error : no locales !') : options.locales;
+  maxSize           = (options.maxSize == undefined) ? "400000000" : options.maxSize;
 
   flashvars = {
     signature_query_url: window.location.protocol + '//' + window.location.host + '/s3_uploads',
     fileTypes: fileTypes,
+    maxSize: maxSize,
     fileTypeDesc: fileTypeDesc,
     locales: encodeURIComponent(JSON.stringify(locales)),
     id: id

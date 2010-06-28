@@ -7,3 +7,4 @@ fr:
       upload_error:       "Erreur lors de l'envoi"
       upload_finish:      "Envoi terminé"
       send:               "Envoyer"
+      too_big:            "Votre fichier est trop gros (400mo max)"

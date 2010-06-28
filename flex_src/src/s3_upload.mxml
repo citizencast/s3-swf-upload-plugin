@@ -34,6 +34,7 @@
 				  	options.onCancelCall      = FlexGlobals.topLevelApplication.parameters.id + '.onCancel';
 					options.onStartCall		  = FlexGlobals.topLevelApplication.parameters.id + '.onStart';
 					options.locales 		  = FlexGlobals.topLevelApplication.parameters.locales;
+					options.maxSize			  = FlexGlobals.topLevelApplication.parameters.maxSize;
 					localeObject = JSON.decode(options.locales);
 			    }
 			}
@@ -49,6 +50,19 @@
 			    });
 			    
 			    fileReference.addEventListener(Event.SELECT, function(event:Event):void {
+					
+					import mx.controls.Alert;
+					
+					//Alert.show("maxSize"+options.maxSize.toString());
+					
+					//Alert.show(fileReference.size.toString());
+					
+					if (fileReference.size > options.maxSize) {
+						//Alert.show("TOO BIG !!" + options.maxSize + " " + fileReference.size);
+						textInput.text = localeObject['too_big'];
+						return;
+					}
+					
 			        // set options.FileName
 			        options.FileName = fileReference.name.replace(/^.*(\\|\/)/gi, '').replace(/[^A-Za-z0-9\.\-]/gi, '_');
 			        textInput.text   = options.FileName;
