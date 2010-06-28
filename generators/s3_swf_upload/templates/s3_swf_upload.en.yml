@@ -8,3 +8,4 @@ en:
       upload_finish:      "Upload succeed"
       send:               "Upload"
       too_big:            "File size too big (400mb max)"
+      update_flash:       "Please <a href='http://www.adobe.com/go/getflashplayer'>Update</a> your Flash Player to Flash v10.0.0 or higher"

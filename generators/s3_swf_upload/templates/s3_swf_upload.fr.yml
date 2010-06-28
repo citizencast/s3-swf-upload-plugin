@@ -8,3 +8,4 @@ fr:
       upload_finish:      "Envoi terminé"
       send:               "Envoyer"
       too_big:            "Votre fichier est trop gros (400mo max)"
+      update_flash:       "Veuillez <a href='http://www.adobe.com/go/getflashplayer'>mettre à jour</a> votre lecteur Flash avec la version 10.0.0 ou supèrieure."

@@ -38,7 +38,7 @@ module S3SwfUpload
       out = ""
       out << %(
         <div id="s3_swf#{@count}">
-          Please <a href="http://www.adobe.com/go/getflashplayer">Update</a> your Flash Player to Flash v10.0.0 or higher...
+          #{ERROR_MESSAGES[:update_flash]}
         </div>
       )
       
@@ -70,9 +70,17 @@ module S3SwfUpload
                 #{canceled}
               }
             });
+            
         </script>
 
         <a href="#" id='s3_upload_#{@count}' onclick="s3_swf#{@count}.upload('#{prefix}', '#{destinationKey}');">#{ERROR_MESSAGES[:send]}</a>
+        
+        <script type="text/javascript">
+          if (swfobject.hasFlashPlayerVersion("10.0.0") == false) {
+            $('#s3_upload_#{@count}').hide();
+          }
+        </script>
+        
       )
       
       @count += 1

@@ -12,7 +12,7 @@ function s3_swf_init(id, options)
 {
   width             = (options.width == undefined) ? 500 : options.width;
   height            = (options.height == undefined) ? 40 : options.height;
-  version           = (options.version == undefined) ? '9.0.0' : options.version;
+  version           = (options.version == undefined) ? '10.0.0' : options.version;
   onFileSelected    = (options.onFileSelected == undefined) ? function(){} : options.onFileSelected;
   onSuccess         = (options.onSuccess == undefined) ? function(){} : options.onSuccess;
   onFailed          = (options.onFailed == undefined) ? function(){} : options.onFailed;
