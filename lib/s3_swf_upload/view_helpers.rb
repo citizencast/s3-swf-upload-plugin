@@ -53,6 +53,7 @@ module S3SwfUpload
               fileTypeDesc: '#{fileTypeDesc}',
               width:  #{width},
               height: #{height},
+              maxSize: #{maxSize},
               locales: #{ERROR_MESSAGES.all[I18n.locale.to_sym].to_json},
               onSuccess: function(filename, filesize){
                 #{success}
